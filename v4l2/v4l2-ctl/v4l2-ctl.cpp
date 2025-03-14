@@ -36,6 +36,11 @@
 #include <sys/klog.h>
 #endif
 
+#ifdef __ANDROID__
+#undef EPOLLPRI
+#define EPOLLPRI (__poll_t) 0x00000002
+#endif
+
 char options[OptLast];
 
 static int app_result;
